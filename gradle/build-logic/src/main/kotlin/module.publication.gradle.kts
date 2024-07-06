@@ -1,0 +1,52 @@
+plugins {
+  `maven-publish`
+  signing
+}
+
+publishing {
+  publications.withType<MavenPublication> {
+    // Stub javadoc.jar artifact
+    artifact(
+      tasks.register("${name}JavadocJar", Jar::class) {
+        archiveClassifier.set("javadoc")
+        archiveAppendix.set(this@withType.name)
+      },
+    )
+    repositories {
+      maven {
+        // TODO: Setup the repository
+      }
+    }
+    pom {
+      name.set("Yeka Libraries")
+      description.set("A collection of Kotlin Multiplatform libraries.")
+      url.set("https://github.com/YektaDev/Yeka")
+      licenses {
+        license {
+          name.set("Apache-2.0")
+          url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+        }
+      }
+      developers {
+        developer {
+          id.set("YektaDev")
+          name.set("Ali Khaleqi Yekta")
+          organization.set("Yeka")
+          organizationUrl.set("https://www.yekta.dev")
+        }
+      }
+      scm {
+        url.set("https://github.com/YektaDev/Yeka")
+        connection.set("scm:git://github.com/YektaDev/Yeka.git")
+        developerConnection.set("scm:git://github.com/YektaDev/Yeka.git")
+      }
+    }
+  }
+}
+
+signing {
+  if (project.hasProperty("signing.gnupg.keyName")) {
+    useGpgCmd()
+    sign(publishing.publications)
+  }
+}
