@@ -20,3 +20,8 @@ dependencyResolutionManagement {
     }
   }
 }
+
+include(
+  ":yeka-log",
+  ":yeka-util",
+)
