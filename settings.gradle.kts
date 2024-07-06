@@ -16,3 +16,8 @@ dependencyResolutionManagement {
     mavenCentral()
   }
 }
+
+include(
+  ":yeka-log",
+  ":yeka-util",
+)
