@@ -1,5 +1,14 @@
 package dev.yekta.yeka.log
 
-actual fun platformLogWriter(formatter: LogFormatter): LogWriter {
-  TODO("Not yet implemented")
+actual fun platformLogWriter(formatter: LogFormatter): LogWriter = object : LogWriter {
+  override fun log(severity: LogSeverity, message: String, input: Any?) {
+    val log = formatter.format(severity, message, input)
+    when(severity) {
+      LogSeverity.VERBOSE -> console.log(log)
+      LogSeverity.INFO -> console.info(log)
+      LogSeverity.WARN -> console.warn(log)
+      LogSeverity.ERROR -> console.error(log)
+      LogSeverity.ASSERT -> console.error(log)
+    }
+  }
 }
