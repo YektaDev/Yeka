@@ -6,5 +6,5 @@ package dev.yekta.yeka.log
  * [PlainLogFormatter] on the platforms that don't support colored logs (e.g., Android).
  */
 actual fun debugLogFormatter(): LogFormatter {
-    TODO("Not yet implemented")
+  TODO("Not yet implemented")
 }
