@@ -1,5 +1,6 @@
 /*
- * Unpublished Copyright 2022-2023 Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright 2024 Ali Khaleqi Yekta, All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 @file:Suppress("unused")
