@@ -11,6 +11,10 @@ plugins {
   id("module.publication")
 }
 
+val optIn = listOf(
+  "kotlin.js.ExperimentalJsExport",
+)
+
 kotlin {
   applyDefaultHierarchyTemplate()
 
@@ -48,6 +52,10 @@ kotlin {
   @OptIn(ExperimentalWasmDsl::class) wasmJs()
 
   sourceSets {
+    all {
+      optIn.forEach(languageSettings::optIn)
+    }
+
     val commonMain by getting {
       dependencies {
         implementation(libs.ksoup.entities)
