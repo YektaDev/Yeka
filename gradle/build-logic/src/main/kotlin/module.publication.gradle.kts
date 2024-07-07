@@ -32,10 +32,15 @@ publishing {
           url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
         }
       }
+      issueManagement {
+        system.set("Github")
+        url.set("https://github.com/YektaDev/Yeka/issues")
+      }
       developers {
         developer {
           id.set("YektaDev")
           name.set("Ali Khaleqi Yekta")
+          email.set("me@yekta.dev")
           organization.set("Yeka")
           organizationUrl.set("https://www.yekta.dev")
         }
