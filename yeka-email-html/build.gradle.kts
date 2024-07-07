@@ -33,6 +33,9 @@ kotlin {
 
     val javaMain by creating {
       dependsOn(commonMain)
+      dependencies {
+        implementation(libs.apache.commons.text)
+      }
     }
 
     jvmMain.get().dependsOn(javaMain)
