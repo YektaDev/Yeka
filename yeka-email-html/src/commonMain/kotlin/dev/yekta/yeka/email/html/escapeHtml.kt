@@ -5,4 +5,6 @@
 
 package dev.yekta.yeka.email.html
 
-expect fun String.escapeHtml(): String
+import com.mohamedrejeb.ksoup.entities.KsoupEntities
+
+internal fun String.escapeHtml(): String = KsoupEntities.encodeHtml(this)

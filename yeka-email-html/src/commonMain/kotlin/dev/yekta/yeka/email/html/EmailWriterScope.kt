@@ -6,6 +6,7 @@
 package dev.yekta.yeka.email.html
 
 import org.intellij.lang.annotations.Language
+import kotlin.jvm.JvmField
 
 sealed interface EmailHtmlWriterScope {
   fun String.escape(): String

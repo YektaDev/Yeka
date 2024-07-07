@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+
 plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.kotlinMultiplatform)
@@ -21,8 +23,35 @@ kotlin {
     }
   }
 
+  iosX64()
+  iosArm64()
+  iosSimulatorArm64()
+
+  linuxX64()
+  linuxArm64()
+
+  macosX64()
+  macosArm64()
+
+  tvosArm64()
+  tvosX64()
+  tvosSimulatorArm64()
+
+  watchosArm32()
+  watchosArm64()
+  watchosX64()
+  watchosSimulatorArm64()
+  watchosDeviceArm64()
+
+  js()
+  @OptIn(ExperimentalWasmDsl::class) wasmWasi()
+  @OptIn(ExperimentalWasmDsl::class) wasmJs()
+
   sourceSets {
     val commonMain by getting {
+      dependencies {
+        implementation(libs.ksoup.entities)
+      }
     }
 
     val commonTest by getting {
@@ -33,9 +62,6 @@ kotlin {
 
     val javaMain by creating {
       dependsOn(commonMain)
-      dependencies {
-        implementation(libs.apache.commons.text)
-      }
     }
 
     jvmMain.get().dependsOn(javaMain)
