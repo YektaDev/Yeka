@@ -3,8 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-
 plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.kotlinMultiplatform)
@@ -53,9 +51,6 @@ kotlin {
     binaries.library()
     binaries.executable()
   }
-
-  @OptIn(ExperimentalWasmDsl::class) wasmWasi()
-  @OptIn(ExperimentalWasmDsl::class) wasmJs()
 
   sourceSets {
     all {
