@@ -25,4 +25,5 @@ dependencyResolutionManagement {
 include(
   ":yeka-log",
   ":yeka-util",
+  ":yeka-email-html",
 )
