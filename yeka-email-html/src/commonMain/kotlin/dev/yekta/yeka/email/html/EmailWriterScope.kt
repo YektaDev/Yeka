@@ -5,16 +5,16 @@
 
 package dev.yekta.yeka.email.html
 
-import org.intellij.lang.annotations.Language
+import kotlin.js.JsExport
 import kotlin.jvm.JvmField
 
+@JsExport
 sealed interface EmailHtmlWriterScope {
   fun String.escape(): String
   fun img(src: String, alt: String, width: Int, height: Int)
-  fun img(src: String, alt: String, size: Int) = img(src, alt, size, size)
   fun primaryButton(label: String, href: String, inNewTab: Boolean = true)
   fun secondaryButton(label: String, href: String, inNewTab: Boolean = true)
-  fun raw(@Language("HTML") html: String)
+  fun raw(html: String)
 }
 
 internal class EmailTemplateScopeImp : EmailHtmlWriterScope {
@@ -23,12 +23,11 @@ internal class EmailTemplateScopeImp : EmailHtmlWriterScope {
 
   override fun String.escape() = this.escapeHtml()
 
-  override fun raw(@Language("HTML") html: String) {
+  override fun raw(html: String) {
     output.append(html)
   }
 
-  @Language("HTML")
-  private fun button(@Language("HTML") innerHtml: String, classes: String): String = """
+  private fun button(innerHtml: String, classes: String): String = """
   <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="$classes">
     <tbody><tr><td align="center">
       <table role="presentation" border="0" cellpadding="0" cellspacing="0">

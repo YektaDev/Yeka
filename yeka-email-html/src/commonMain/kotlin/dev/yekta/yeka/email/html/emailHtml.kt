@@ -5,15 +5,16 @@
 
 package dev.yekta.yeka.email.html
 
-import org.intellij.lang.annotations.Language
+import kotlin.js.JsExport
 
+@JsExport
 fun emailHtml(
   title: String,
   receiveReason: String,
   hiddenPreviewPrefix: String? = null,
   footerTopRow: EmailHtmlWriterScope.() -> Unit = {},
   footerBottomRow: EmailHtmlWriterScope.() -> Unit = {},
-  @Language("CSS") extraStyle: String = "",
+  extraStyle: String = "",
   body: EmailHtmlWriterScope.() -> Unit,
 ): String {
   return emailHtmlTemplate(
@@ -27,20 +28,18 @@ fun emailHtml(
   )
 }
 
-@Language("HTML")
 private fun emailHtmlTemplate(
   titleEs: String,
   receiveReasonEs: String,
   hiddenPrefixEs: String?,
-  @Language("CSS") extraStyleSafe: String,
-  @Language("HTML") body: String,
-  @Language("HTML") footerTopRow: String,
-  @Language("HTML") footerBottomRow: String,
+  extraStyleSafe: String,
+  body: String,
+  footerTopRow: String,
+  footerBottomRow: String,
 ): String {
   val hiddenPreviewClass =
     "color:transparent;display:none;width:0;height:0;max-width:0;max-height:0;opacity:0;overflow:hidden;mso-hide:all;visibility:hidden"
 
-  @Language("HTML")
   val html = """
   <!doctype html>
   <html lang="en">
