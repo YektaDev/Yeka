@@ -43,7 +43,13 @@ kotlin {
   watchosSimulatorArm64()
   watchosDeviceArm64()
 
-  js()
+  js(IR) {
+    browser()
+    nodejs()
+    binaries.library()
+    binaries.executable()
+  }
+
   @OptIn(ExperimentalWasmDsl::class) wasmWasi()
   @OptIn(ExperimentalWasmDsl::class) wasmJs()
 
