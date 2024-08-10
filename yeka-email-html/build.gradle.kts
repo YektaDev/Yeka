@@ -7,6 +7,7 @@ plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.kotlinMultiplatform)
   id("module.publication")
+  id("dev.petuska.npm.publish")
 }
 
 val optIn = listOf(
@@ -46,10 +47,17 @@ kotlin {
   watchosDeviceArm64()
 
   js(IR) {
-    browser()
+    moduleName = "yeka-email-html"
+    browser {
+      webpackTask {
+        mainOutputFileName = "yeka_email_html.js"
+        output.library = "yekaEmailHtml"
+      }
+    }
     nodejs()
     binaries.library()
     binaries.executable()
+    generateTypeScriptDefinitions()
   }
 
   sourceSets {
