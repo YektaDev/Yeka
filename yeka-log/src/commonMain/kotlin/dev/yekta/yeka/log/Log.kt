@@ -44,6 +44,7 @@ data class Log(
   /**
    * # What a Terrible Failure!
    * ## Logs with [ASSERT] severity.
+   * For states that shouldn't be.
    */
   inline fun wtf(message: String, inputs: Any? = null) = push(ASSERT, transformer(message), inputs)
 
@@ -70,6 +71,7 @@ data class Log(
   /**
    * # What a Terrible Failure!
    * ## Logs with [ASSERT] severity.
+   * For states that shouldn't be.
    */
   inline fun wtf(message: String, inputs: () -> Any) = push(ASSERT, transformer(message), inputs())
 }
