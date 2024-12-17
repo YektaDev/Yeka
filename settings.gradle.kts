@@ -26,4 +26,5 @@ include(
   ":yeka-log",
   ":yeka-util",
   ":yeka-email-html",
+  ":yeka-klogger-ext",
 )

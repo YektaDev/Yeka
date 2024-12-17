@@ -21,26 +21,6 @@ kotlin {
     }
   }
 
-  iosX64()
-  iosArm64()
-  iosSimulatorArm64()
-
-  linuxX64()
-  linuxArm64()
-
-  macosX64()
-  macosArm64()
-
-  tvosArm64()
-  tvosX64()
-  tvosSimulatorArm64()
-
-  watchosArm32()
-  watchosArm64()
-  watchosX64()
-  watchosSimulatorArm64()
-  watchosDeviceArm64()
-
   js(IR) {
     browser()
     nodejs()
@@ -48,13 +28,14 @@ kotlin {
     binaries.executable()
   }
 
-  @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class) wasmWasi()
+  // @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class) wasmWasi()
   @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class) wasmJs()
 
   sourceSets {
     val commonMain by getting {
       dependencies {
         implementation(project(":yeka-util"))
+        implementation(libs.kotlin.logging)
       }
     }
 
@@ -74,7 +55,7 @@ kotlin {
 }
 
 android {
-  namespace = "dev.yekta.yeka.log"
+  namespace = "dev.yekta.yeka.klogger.ext"
   compileSdk = libs.versions.android.compileSdk.get().toInt()
   defaultConfig {
     minSdk = libs.versions.android.minSdk.get().toInt()
