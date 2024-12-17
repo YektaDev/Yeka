@@ -12,6 +12,7 @@ import dev.yekta.yeka.log.LogSeverity.ERROR
 import dev.yekta.yeka.log.LogSeverity.INFO
 import dev.yekta.yeka.log.LogSeverity.VERBOSE
 import dev.yekta.yeka.log.LogSeverity.WARN
+import dev.yekta.yeka.util.contentToString
 
 internal object ColoredPrintLogFormatter : LogFormatter {
   private const val RESET = "\u001b[0m"
@@ -32,7 +33,7 @@ internal object ColoredPrintLogFormatter : LogFormatter {
     }
     return when (input) {
       null -> "$BLACK_BACK$s$message$RESET"
-      else -> "$BLACK_BACK$s$message ${DefaultInputsFormatter.format(input)}$RESET"
+      else -> "$BLACK_BACK$s$message <${input.contentToString()}>$RESET"
     }
   }
 }

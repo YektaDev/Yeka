@@ -10,7 +10,7 @@ import dev.yekta.yeka.log.LogSeverity.ERROR
 import dev.yekta.yeka.log.LogSeverity.INFO
 import dev.yekta.yeka.log.LogSeverity.VERBOSE
 import dev.yekta.yeka.log.LogSeverity.WARN
-import dev.yekta.yeka.log.util.DefaultInputsFormatter
+import dev.yekta.yeka.util.contentToString
 
 /**
  * A [LogFormatter] that formats logs without colors. This is a suitable formatter for production
@@ -27,7 +27,7 @@ object PlainLogFormatter : LogFormatter {
     }
     return when (input) {
       null -> "$s $message"
-      else -> "$s $message ${DefaultInputsFormatter.format(input)}"
+      else -> "$s $message <${input.contentToString()}>"
     }
   }
 }
