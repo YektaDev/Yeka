@@ -12,9 +12,8 @@ private const val MAX_COUNT = 100
 private const val MAX_DEPTH = 3
 private const val MAX_CHARS = 50000
 
-fun Any?.contentToString(limitOutput: Boolean = true): String {
-  if (!limitOutput) return formatUnlimited(this)
-
+fun Any?.contentToStringUnlimited(): String = formatUnlimited(this)
+fun Any?.contentToString(): String {
   val str = format(this)
   return when (str.length <= MAX_CHARS) {
     true -> str
