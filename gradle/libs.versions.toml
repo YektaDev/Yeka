@@ -7,11 +7,13 @@ kotlin = "2.1.0"
 
 nexus-publish = "2.0.0"
 ksoup = "0.4.0"
+kotlin-logging = "7.0.3"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 nexus-publish = { module = "io.github.gradle-nexus.publish-plugin:io.github.gradle-nexus.publish-plugin.gradle.plugin", version.ref = "nexus-publish" }
 ksoup-entities = { module = "com.mohamedrejeb.ksoup:ksoup-entities", version.ref = "ksoup" }
+kotlin-logging = { module = "io.github.oshai:kotlin-logging", version.ref = "kotlin-logging" }
 
 [plugins]
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
